@@ -21,6 +21,8 @@ Utility function for reacting to specific differences in javascript objects.
     bar: ({ bar }) => { alert(`bar became ${bar}!`) }, // will be called
     // We can also "watch" for changes in any of a number of keys
     [[ 'bar', 'foo' ]]: ({ bar }) => { alert(`bar or foo changed!`) }, // will be called
+    // This sort of thing is fine too
+    'foo,bar': ({ bar }) => { alert(`bar or foo changed!`) }, // will be called
   });
 ```
 
