@@ -19,6 +19,8 @@ Utility function for reacting to specific differences in javascript objects.
   keyChange(someObject, anotherObject, {
     foo: anotherObject => { /* respond to new foo */ }, // Not called
     bar: ({ bar }) => { alert(`bar became ${bar}!`) }, // will be called
+    // We can also "watch" for changes in any of a number of keys
+    [[ 'bar', 'foo' ]]: ({ bar }) => { alert(`bar or foo changed!`) }, // will be called
   });
 ```
 
