@@ -1,0 +1,42 @@
+{
+  "name": "keychange",
+  "descript": "Utility function for reacting to specific differences in javascript objects.",
+  "version": "0.0.1",
+  "main": "dist/keychange.cjs.js",
+  "module": "dist/keychange.es.js",
+  "jsnext:main": "dist/keychange.es.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/klarstrup/keychange.git"
+  },
+  "scripts": {
+    "test:ci": "jest --ci",
+    "test": "jest --watch --coverage",
+    "build": "rollup --config",
+    "lint": "eslint --fix \"src/\" \"rollup.config.js\"",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-modern-browsers": "^9.0.2",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-compat": "^2.0.1",
+    "eslint-plugin-import": "2.7.0",
+    "jest": "^21.2.1",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "rollup-plugin-commonjs": "^8.2.4",
+    "rollup-plugin-ramda": "^1.0.5"
+  },
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
