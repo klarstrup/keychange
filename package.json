@@ -1,7 +1,7 @@
 {
   "name": "keychange",
   "descript": "Utility function for reacting to specific differences in javascript objects.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/keychange.cjs.js",
   "module": "dist/keychange.es.js",
   "jsnext:main": "dist/keychange.es.js",
