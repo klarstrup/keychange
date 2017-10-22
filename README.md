@@ -60,3 +60,11 @@ componentWillReceiveProps(newProps) {
   }, this.props, newProps);
 }
 ```
+
+Heck, for `componentWillReceiveProps` specifically you could even do:
+```js
+componentWillReceiveProps = keyChange({
+  query: ({ fetchCatalogs }) => fetchCatalogs(),
+  catalogs: ({ catalogs, fetchStores }) => fetchStores(R.pluck('store_id', catalogs)),
+}, this.props);
+```
