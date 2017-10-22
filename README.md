@@ -5,7 +5,7 @@ Utility function for reacting to specific differences in javascript objects.
 
 ## basic operation
 
-`keychange` will take three objects as parameters, two to compare and a third that serves as a mapping of keys to watch for changes and their handlers for the new values.
+`keychange` will take three objects as parameters, two to compare and another that serves as a mapping of keys to watch for changes and their handlers for the new values.
 
 ```js
   const someObject = {
@@ -16,14 +16,14 @@ Utility function for reacting to specific differences in javascript objects.
     foo: 'value',
     bar: 'hello',
   };
-  keyChange(someObject, anotherObject, {
+  keyChange({
     foo: anotherObject => { /* respond to new foo */ }, // Not called
     bar: ({ bar }) => { alert(`bar became ${bar}!`) }, // will be called
     // We can also "watch" for changes in any of a number of keys
     [[ 'bar', 'foo' ]]: ({ bar }) => { alert(`bar or foo changed!`) }, // will be called
     // This sort of thing is fine too
     'foo,bar': ({ bar }) => { alert(`bar or foo changed!`) }, // will be called
-  });
+  }, someObject, anotherObject);
 ```
 
 ## real life examples
@@ -40,10 +40,10 @@ componentWillReceiveProps = newProps => {
 };
 // Becomes
 componentWillReceiveProps = newProps =>
-  keyChange(this.props, newProps, {
+  keyChange({
     query: ({ fetchCatalogs }) => fetchCatalogs(),
     catalogs: ({ catalogs, fetchStores }) => fetchStores(R.pluck('store_id', catalogs)),
-  });
+  }, this.props, newProps);
 ```
 
 ```js
@@ -54,9 +54,9 @@ componentWillReceiveProps(newProps) {
 }
 // Becomes
 componentWillReceiveProps(newProps) {
-  keyChange(this.props, newProps, {
+  keyChange({
     [['latitude', 'longitude']]: ({ latitude, longitude }) =>
       this.map.panTo({ lat: latitude, lng: longitude }),
-  });
+  }, this.props, newProps);
 }
 ```
