@@ -1,11 +1,11 @@
 [![Build Status](https://travis-ci.org/klarstrup/keychange.svg?branch=master)](https://travis-ci.org/klarstrup/keychange)
 
 # keychange
-Utility function for reacting to specific differences in javascript objects.
+Utility function for acting upon specific differences in javascript objects.
 
 ## basic operation
 
-`keychange` will take three objects as parameters, two to compare and another that serves as a mapping of keys to watch for changes and their handlers for the new values.
+`keychange` will take three objects as parameters, two to compare and another that serves as a mapping of keys to check for differences and their handlers for the new values.
 
 ```js
   const someObject = {
@@ -19,10 +19,10 @@ Utility function for reacting to specific differences in javascript objects.
   keyChange({
     foo: anotherObject => { /* respond to new foo */ }, // Not called
     bar: ({ bar }) => { alert(`bar became ${bar}!`) }, // will be called
-    // We can also "watch" for changes in any of a number of keys
-    [[ 'bar', 'foo' ]]: ({ bar }) => { alert(`bar or foo changed!`) }, // will be called
+    // We can also check for differences in any of a number of keys at once
+    [[ 'bar', 'foo' ]]: ({ bar }) => { alert(`bar and/or foo was different!`) }, // will be called
     // This sort of thing is fine too
-    'foo,bar': ({ bar }) => { alert(`bar or foo changed!`) }, // will be called
+    'foo,bar': ({ bar }) => { alert(`bar and/or foo was different!`) }, // will be called
   }, someObject, anotherObject);
 ```
 
