@@ -38,5 +38,10 @@
   },
   "dependencies": {
     "ramda": "^0.25.0"
+  },
+  "jest": {
+    "testMatch": ["**/?(*.)(spec|test).js?(x)"],
+    "collectCoverage": true,
+    "coverageReporters": ["html"]
   }
 }
